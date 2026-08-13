@@ -1,3 +1,7 @@
+Fixed DPI scaling issues that would cut out some options for users with dpi enabled.
+
+fixed GH rate limiting by added in settings window a place for users to add their own GH token
+
 # Octo Updater
 
 A standalone desktop updater and mod manager for the **OctoWoW** client.
