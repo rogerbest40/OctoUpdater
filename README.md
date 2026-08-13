@@ -1,6 +1,6 @@
 Fixed DPI scaling issues that would cut out some options for users with dpi enabled.
 
-fixed GH rate limiting by added in settings window a place for users to add their own GH token
+fixed GH rate limiting by added in settings window a place for users to add their own GH token. Open the settings and add your github PAT key there if you use lots of addons.
 
 # Octo Updater
 
