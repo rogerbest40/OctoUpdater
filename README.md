@@ -2,7 +2,7 @@
 
 If the updater fails to recognize your game as up-to-date after a recent server update, follow these steps:
 
-> **Note:** This update may replace some of your custom `.mpq` mods. Remove all custom MPQs before step 1, then add them back after.
+> **Note:** This update may replace some of your custom `.mpq` mods.  I recommend to Remove all custom MPQs before step 1, then add them back after.
 
 1. **Run the standard Octo Launcher** — update the launcher, update the game, and launch the game once from it.
 2. **Run Octo Updater** (this repository) — go to **Settings** and enable **"Skip update check (force PLAY)"**.
