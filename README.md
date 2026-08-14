@@ -1,3 +1,15 @@
+# ⚠️ Fix for Latest Update Issues
+
+If the updater fails to recognize your game as up-to-date after a recent server update, follow these steps:
+
+> **Note:** This update may replace some of your custom `.mpq` mods. Remove all custom MPQs before step 1, then add them back after.
+
+1. **Run the standard Octo Launcher** — update the launcher, update the game, and launch the game once from it.
+2. **Run Octo Updater** (this repository) — go to **Settings** and enable **"Skip update check (force PLAY)"**.
+3. You can now launch the game from this updater as usual. Everything works the same, but without enforcing the update check until the main author releases a fix.
+
+---
+
 Fixed DPI scaling issues that would cut out some options for users with dpi enabled.
 
 fixed GH rate limiting by added in settings window a place for users to add their own GH token. Open the settings and add your github PAT key there if you use lots of addons.
