@@ -12,9 +12,21 @@ If the updater fails to recognize your game as up-to-date after a recent server 
 
 ---
 
-Fixed DPI scaling issues that would cut out some options for users with dpi enabled.
+## ⚠️ GitHub Rate Limiting
 
-fixed GH rate limiting by added in settings window a place for users to add their own GH token. Open the settings and add your github PAT key there if you use lots of addons.
+If you're getting errors when installing or updating addons, you may be hitting GitHub's API rate limit.
+
+**Fix:** Go to **Settings** → enter your **GitHub Personal Access Token** in the token field. This increases your rate limit significantly.
+
+> **Tip:** [Create a PAT here](https://github.com/settings/tokens) with no special scopes needed — a classic token with no checkboxes is sufficient.
+
+---
+
+## 🖥️ DPI Scaling Fix
+
+Fixed DPI scaling issues that would cut off some UI options for users with high-DPI displays enabled.
+
+---
 
 # Octo Updater
 
