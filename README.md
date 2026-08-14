@@ -5,7 +5,7 @@ If the updater fails to recognize your game as up-to-date after a recent server 
 > **Note:** This update may replace some of your custom `.mpq` mods.  I recommend to Remove all custom MPQs before step 1, then add them back after.
 
 1. **Run the standard Octo Launcher** — update the launcher, update the game, and launch the game once from it - you can try without running the game but i had to run once.
-2. **Run Octo Updater** (from this repository releases - https://github.com/rogerbest40/OctoUpdater/releases/tag/release112) — if you used this updater before from me or original author make sure to put the .exe on same folder you had it before- go to **Settings** and enable **"Skip update check (force PLAY)"**.
+2. **Run Octo Updater** (from this repository releases - https://github.com/rogerbest40/OctoUpdater/releases/tag/release112) — if you used this updater before from me or original author make sure to put the .exe on same folder you had it before- go to **Settings** and enable **"Skip update check (force PLAY)"**. NOTE: it seems that when you open the updater you have to recheck thIS new option even if its already checked from your previous executions.
 <img width="815" height="465" alt="{54AD8B07-10DA-40DD-8FD0-57A987B0C87E}" src="https://github.com/user-attachments/assets/0950d5ba-9022-4537-834d-298e33e4de2a" />
 
 3. You can now launch the game from this updater as usual. Everything works the same, but without enforcing the update check until the main author releases a fix.
