@@ -3051,6 +3051,9 @@ class OctoUpdaterApp(tk.Tk):
         self._auto_addons_var = tk.BooleanVar(
             value=bool(self._cfg.get("auto_install_addons", True))
         )
+        self._skip_update_check_var = tk.BooleanVar(
+            value=bool(self._cfg.get("skip_update_check", False))
+        )
         self._github_token_var = tk.StringVar(
             value=self._cfg.get(GITHUB_TOKEN_CONFIG_KEY, "")
         )
@@ -5970,6 +5973,27 @@ class OctoUpdaterApp(tk.Tk):
             bd=0,
             cursor="hand2",
         ).pack(anchor="w", pady=(10, 0))
+        cb_skip_update = tk.Checkbutton(
+            rcol,
+            text=" Skip update check (force PLAY)",
+            variable=self._skip_update_check_var,
+            command=self._toggle_skip_update_check,
+            font=("Segoe UI", 10),
+            fg=C_TEXT,
+            bg=P_BG,
+            activebackground=P_BG,
+            activeforeground=C_TEXT,
+            selectcolor=P_INP,
+            highlightthickness=0,
+            bd=0,
+            cursor="hand2",
+        )
+        cb_skip_update.pack(anchor="w", pady=(10, 0))
+        self._add_tooltip(
+            cb_skip_update,
+            "Always show PLAY button even if the updater thinks the game is outdated. "
+            "Use this when you updated the game through another launcher.",
+        )
 
         tk.Label(
             rcol, text="GITHUB", font=("Segoe UI", 10, "bold"), fg=C_GOLD, bg=P_BG
@@ -6126,6 +6150,12 @@ class OctoUpdaterApp(tk.Tk):
         val = self._auto_addons_var.get()
         self._cfg = update_config(lambda c: c.__setitem__("auto_install_addons", val))
         self._auto_addons_retrigger = val
+
+    def _toggle_skip_update_check(self):
+        val = self._skip_update_check_var.get()
+        self._cfg = update_config(lambda c: c.__setitem__("skip_update_check", val))
+        # Immediately refresh the button state so PLAY becomes available
+        self._refresh_ready_state()
 
     def _toggle_github_token(self, *_):
         token = self._github_token_var.get().strip()
@@ -6333,7 +6363,9 @@ class OctoUpdaterApp(tk.Tk):
             self._set_btn_busy("Installing…")
             self._status_var.set("Downloading addons…")
             return
-        if not self._client_ready:
+        # Skip update check option: always allow PLAY regardless of client state
+        skip_check = self._cfg.get("skip_update_check", False)
+        if not self._client_ready and not skip_check:
             self._status_var.set("Update available!")
             self._set_btn_update()
             return
@@ -6342,7 +6374,10 @@ class OctoUpdaterApp(tk.Tk):
             self._status_var.set("Mod errors — check MODS tab")
         else:
             self._set_btn_play()
-            self._status_var.set("Everything up to date!")
+            if skip_check and not self._client_ready:
+                self._status_var.set("Update check skipped")
+            else:
+                self._status_var.set("Everything up to date!")
 
     def _btn_click(self):
         if self._btn_mode == "play":
